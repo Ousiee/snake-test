@@ -2,12 +2,21 @@ package nl.hu.bep.setup;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import java.security.SecureRandom;
 
+import java.util.Base64;
 import java.util.Date;
 
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "your-secret-key";
+    private static final String SECRET_KEY = generateRandomKey();
+
+    private static String generateRandomKey() {
+        SecureRandom random = new SecureRandom();
+        byte[] key = new byte[32]; // 32 bytes = 256 bits
+        random.nextBytes(key);
+        return Base64.getEncoder().encodeToString(key);
+    }
 
     public static String generateToken(String subject) {
         return Jwts.builder()
