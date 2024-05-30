@@ -25,7 +25,7 @@ jobs:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'myuniquebattlesnakeapp' # Dit is de naam van je Azure Web App
+        app-name: 'myuniquebattlesnakeapp' # Vervang dit door de naam van je Azure Web App
         slot-name: 'production'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: target/*.jar # De hoofdmap van je project waar de gebuildde JAR is
+        package: target/*.jar # De locatie van je gebuildde JAR
